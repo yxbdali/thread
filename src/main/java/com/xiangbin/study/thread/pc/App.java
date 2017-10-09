@@ -28,14 +28,14 @@ public class App
     }
 
     private static void pc() throws InterruptedException {
-        executorService.submit(Consumer.of(shareData, LOCK));
+        executorService.execute(Consumer.of(shareData, LOCK));
         Thread.sleep(1000);
-        executorService.submit(Producer.of(shareData, LOCK));
+        executorService.execute(Producer.of(shareData, LOCK));
     }
 
     private static void pc2() throws InterruptedException {
-        executorService.submit(Consumer2.of(shareData2, lock, condition));
+        executorService.execute(Consumer2.of(shareData2, lock, condition));
         Thread.sleep(3000);
-        executorService.submit(Producer2.of(shareData2, lock, condition));
+        executorService.execute(Producer2.of(shareData2, lock, condition));
     }
 }
